@@ -19,13 +19,20 @@ spring :
     host: 127.0.0.1
     port: 9300
     resthost: 127.0.0.1
-    restport: 9200 
-      
+    restport: 9200
       
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+
+  main:
+    web-application-type: servlet
+
+  web:
+    resources:
+      add-mappings: false
+
   datasource:
     url: jdbc:mariadb://13.125.216.41:3306/howstudy?characterEncoding=UTF-8&serverTimezone=Asia/Seoul&useLegacyDatetimeCode=false
     driver-class-name: org.mariadb.jdbc.Driver
@@ -38,7 +45,7 @@ mybatis:
   mapper-locations: classpath:mapper/**/*.xml
   type-aliases-package: com.example.demo.vo
 
-server: 
+server:
   tomcat: 
     accesslog:
       enabled: true
@@ -48,6 +55,5 @@ server:
       file-date-format: .yyyy-MM-dd
       pattern: '[%{yyyy-MM-dd HH:mm:ss}t] %s "%r" %{User-Agent}i %{Referer}i %a %b'
     basedir: .
-    
 
-server.port: 8888
+  port: 0   # 외부 Tomcat 사용 시 무시됨, 내장 서버 비활성화용
